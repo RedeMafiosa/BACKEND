@@ -28,14 +28,12 @@ const PostSchema = new mongoose.Schema({
 
 const Post = mongoose.model("Post", PostSchema);
 
-/* 📌 GET POSTS */
-app.get("/posts", async (req, res) => {
+app.get("/api/posts", async (req, res) => {
   const posts = await Post.find().sort({ createdAt: -1 });
   res.json(posts);
 });
 
-/* 📌 CREATE POST */
-app.post("/posts", async (req, res) => {
+app.post("/api/posts", async (req, res) => {
   const post = await Post.create(req.body);
   res.json(post);
 });
